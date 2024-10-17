@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
@@ -27,7 +28,8 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       setError(true);
-      console.log(error);
+      const errorLogin = error.response.data;
+      setErrorMsg(errorLogin);
     }
   };
   return (
@@ -61,9 +63,7 @@ const Login = () => {
           >
             Log in
           </button>
-          {error && (
-            <h3 className="text-red-500 text-sm">Something went wrong!!</h3>
-          )}
+          {error && <h3 className="text-red-500 text-sm">{errorMsg}</h3>}
           <div className="flex space-x-3 justify-center items-center">
             <p>New here?</p>
             <p className="text-blue-500 hover:text-black cursor-pointer">

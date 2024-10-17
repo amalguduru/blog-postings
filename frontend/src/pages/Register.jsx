@@ -9,6 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -26,6 +27,8 @@ const Register = () => {
     } catch (error) {
       setError(true);
       console.log(error);
+      const errorRegister = error.response.data;
+      setErrorMsg(errorRegister);
     }
   };
   return (
@@ -65,9 +68,7 @@ const Register = () => {
           >
             Register
           </button>
-          {error && (
-            <h3 className="text-red-500 text-sm">Something went wrong!</h3>
-          )}
+          {error && <h3 className="text-red-500 text-sm">{errorMsg}</h3>}
           <div className="flex space-x-3 justify-center items-center">
             <p>Already have an account?</p>
             <p className="text-blue-500 hover:text-black cursor-pointer">

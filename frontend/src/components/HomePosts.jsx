@@ -15,9 +15,9 @@ const HomePosts = ({ post }) => {
         <h1 className="text-xl font-bold md:mb-2 mb-1 md:text-2xl">
           {post.title}
         </h1>
-        <div className="flex mb-2 text-sm font-semibold text-gray-500 items-center justify-between md:mb-4">
+        <div className="flex md:flex-row flex-col mb-2 text-sm font-semibold text-gray-500 items-start md:items-center md:justify-between md:mb-4">
           <p>@{post.username}</p>
-          <div className="flex space-x-2">
+          <div className="flex space-x-1">
             {post.updatedAt ? (
               <>
                 <p>{new Date(post.updatedAt).toString().slice(0, 15)}</p>
